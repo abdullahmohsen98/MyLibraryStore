@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyLibraryStore.Models;
 using MyLibraryStore.Models.Repositors;
+using MyLibraryStore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,13 @@ namespace MyLibraryStore.Controllers
     public class BookController : Controller
     {
         private readonly IBookstoreRepository<Book> bookRepository;
+        private readonly IBookstoreRepository<Author> authorRepository;
 
-        public BookController(IBookstoreRepository<Book> bookRepository)
+        public BookController(IBookstoreRepository<Book> bookRepository,
+            IBookstoreRepository<Author> authorRepository)
         {
             this.bookRepository = bookRepository;
+            this.authorRepository = authorRepository;
         }
         // GET: BookController
         public ActionResult Index()
@@ -35,37 +39,92 @@ namespace MyLibraryStore.Controllers
         // GET: BookController/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new BookAuthorViewModel
+            {
+                //Authors = authorRepository.List().ToList()
+                Authors = FillSelectList()
+            };
+            return View(model);
         }
 
         // POST: BookController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(BookAuthorViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    if (model.AuthorId == -1)
+                    {
+                        ViewBag.Message = "Please select an author from the list!";
+                        return View(GetAllAuthors());
+                    }
+
+                    var author = authorRepository.Find(model.AuthorId);
+                    Book book = new Book
+                    {
+                        Id = model.BookId,
+                        Title = model.Title,
+                        Description = model.Description,
+                        Author = author,
+                    };
+                    bookRepository.Add(book);
+
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
+
             }
-            catch
+            var vmodel = new BookAuthorViewModel
             {
-                return View();
-            }
+                //Authors = authorRepository.List().ToList()
+                Authors = FillSelectList()
+            };
+            
+            ModelState.AddModelError("", "You have to fill all the required fields!");
+            return View(GetAllAuthors());
         }
 
         // GET: BookController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var book = bookRepository.Find(id);
+            var authorId = book.Author == null ? book.Author.Id = 0 : book.Author.Id;
+
+            var viewModel = new BookAuthorViewModel
+            {
+                BookId = book.Id,
+                Title = book.Title,
+                Description = book.Description,
+                AuthorId = authorId,
+                Authors = authorRepository.List().ToList(),
+                //ImageUrl = book.ImageUrl
+            };
+            return View(viewModel);
         }
 
         // POST: BookController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(BookAuthorViewModel viewModel)
         {
             try
             {
+                var author = authorRepository.Find(viewModel.AuthorId);
+                Book book = new Book
+                {
+                    //Id = viewModel.BookId,
+                    Title = viewModel.Title,
+                    Description = viewModel.Description,
+                    Author = author,
+                };
+                bookRepository.Update(viewModel.BookId, book);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -77,22 +136,41 @@ namespace MyLibraryStore.Controllers
         // GET: BookController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var book = bookRepository.Find(id);
+            return View(book);
         }
 
         // POST: BookController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult ConfirmDelete(int id, IFormCollection collection)
         {
             try
             {
+                bookRepository.Delete(id);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+        List<Author> FillSelectList()
+        {
+            var authors = authorRepository.List().ToList();
+            authors.Insert(0, new Author { Id = -1, FullName = "--- Please select an author ---" });
+
+            return authors;
+        }
+        BookAuthorViewModel GetAllAuthors()
+        {
+            var vmodel = new BookAuthorViewModel
+            {
+                Authors = FillSelectList()
+            };
+
+            return vmodel;
         }
     }
 }

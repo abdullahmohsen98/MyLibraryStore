@@ -14,20 +14,29 @@ namespace MyLibraryStore.Models.Repositors
             {
                 new Book
                 {
-                    Id=1, Title="C# Programming", Description="no description"
+                    Id=1, Title="C# Programming",
+                    Description="no description" ,
+                    Author = new Author{Id = 2 }
                 },
                 new Book
                 {
-                    Id=2, Title="Java Programming", Description="no description"
+                    Id=2,
+                    Title="Java Programming",
+                    Description="no description",
+                    Author = new Author()
                 },
                 new Book
                 {
-                    Id=3, Title="Python Programming", Description="no description"
+                    Id=3,
+                    Title="Python Programming",
+                    Description="no description",
+                    Author = new Author()
                 }
             };
         }
         public void Add(Book entity)
         {
+            entity.Id = books.Max(b => b.Id) + 1;
             books.Add(entity);
         }
 

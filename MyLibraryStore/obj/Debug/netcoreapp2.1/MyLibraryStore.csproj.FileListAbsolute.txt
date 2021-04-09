@@ -87,7 +87,6 @@ C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netc
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Author\Edit.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Author\Index.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
-C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.RazorTargetAssemblyInfo.cache
@@ -99,3 +98,6 @@ C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netc
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.csproj.CopyComplete
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Index.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Details.cshtml.g.cs
+C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Create.cshtml.g.cs
+C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Edit.cshtml.g.cs
+C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Delete.cshtml.g.cs
