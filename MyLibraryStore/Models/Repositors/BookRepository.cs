@@ -16,6 +16,7 @@ namespace MyLibraryStore.Models.Repositors
                 {
                     Id=1, Title="C# Programming",
                     Description="no description" ,
+                    ImageUrl = "csharp.jpg",
                     Author = new Author{Id = 2 }
                 },
                 new Book
@@ -23,6 +24,7 @@ namespace MyLibraryStore.Models.Repositors
                     Id=2,
                     Title="Java Programming",
                     Description="no description",
+                    ImageUrl = "java.jpg",
                     Author = new Author()
                 },
                 new Book
@@ -30,6 +32,7 @@ namespace MyLibraryStore.Models.Repositors
                     Id=3,
                     Title="Python Programming",
                     Description="no description",
+                    ImageUrl = "python.jpg",
                     Author = new Author()
                 }
             };
@@ -57,12 +60,18 @@ namespace MyLibraryStore.Models.Repositors
             return books;
         }
 
+        public List<Book> Search(string term)
+        {
+            return  books.Where(a => a.Title.Contains(term)).ToList(); ;
+        }
+
         public void Update(int id, Book newBook)
         {
             var book = Find(id);
             book.Title = newBook.Title;
             book.Description = newBook.Description;
             book.Author = newBook.Author;
+            book.ImageUrl = newBook.ImageUrl;
         }
     }
 }

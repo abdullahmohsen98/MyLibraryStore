@@ -101,3 +101,42 @@ C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netc
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Create.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Edit.cshtml.g.cs
 C:\Users\Darsh\Downloads\MyProject2\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Delete.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\libman.json
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\MyLibraryStore.deps.json
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\MyLibraryStore.runtimeconfig.json
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\MyLibraryStore.runtimeconfig.dev.json
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\MyLibraryStore.dll
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\MyLibraryStore.pdb
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\MyLibraryStore.Views.dll
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\MyLibraryStore.Views.pdb
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.csprojAssemblyReference.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.AssemblyInfoInputs.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.AssemblyInfo.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.csproj.CoreCompileInputs.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.RazorAssemblyInfo.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.RazorAssemblyInfo.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.TagHelpers.input.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.TagHelpers.output.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.RazorCoreGenerate.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Author\Create.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Author\Delete.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Author\Details.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Author\Edit.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Author\Index.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Create.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Delete.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Details.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Edit.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Book\Index.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Validation.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.RazorTargetAssemblyInfo.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.RazorTargetAssemblyInfo.cs
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.Views.pdb
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.dll
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.pdb
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.genruntimeconfig.cache
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.csproj.CopyComplete
+C:\Users\Ali Ameen\MyLibrary\MyLibraryStore\MyLibraryStore\bin\Debug\netcoreapp2.1\appsettings.json

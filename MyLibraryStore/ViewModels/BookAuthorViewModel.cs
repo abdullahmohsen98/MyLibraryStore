@@ -1,4 +1,5 @@
-﻿using MyLibraryStore.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MyLibraryStore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,6 +24,8 @@ namespace MyLibraryStore.ViewModels
         public int AuthorId { get; set; }
 
         public List<Author> Authors { get; set; }
+        public IFormFile File { get; set; }
+        public string ImageUrl { get; set; }
 
     }
 }

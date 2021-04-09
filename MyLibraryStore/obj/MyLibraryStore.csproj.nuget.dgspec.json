@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {}
+    "C:\\Users\\Ali Ameen\\MyLibrary\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {
+    "C:\\Users\\Ali Ameen\\MyLibrary\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
+        "projectUniqueName": "C:\\Users\\Ali Ameen\\MyLibrary\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
         "projectName": "MyLibraryStore",
-        "projectPath": "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
-        "packagesPath": "C:\\Users\\Darsh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\obj\\",
+        "projectPath": "C:\\Users\\Ali Ameen\\MyLibrary\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
+        "packagesPath": "C:\\Users\\Ali Ameen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ali Ameen\\MyLibrary\\MyLibraryStore\\MyLibraryStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Darsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ali Ameen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

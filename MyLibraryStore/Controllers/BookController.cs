@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyLibraryStore.Models;
 using MyLibraryStore.Models.Repositors;
 using MyLibraryStore.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,12 +16,14 @@ namespace MyLibraryStore.Controllers
     {
         private readonly IBookstoreRepository<Book> bookRepository;
         private readonly IBookstoreRepository<Author> authorRepository;
+        private readonly IHostingEnvironment hosting;
 
         public BookController(IBookstoreRepository<Book> bookRepository,
-            IBookstoreRepository<Author> authorRepository)
+            IBookstoreRepository<Author> authorRepository, IHostingEnvironment hosting)
         {
             this.bookRepository = bookRepository;
             this.authorRepository = authorRepository;
+            this.hosting = hosting;
         }
         // GET: BookController
         public ActionResult Index()
@@ -56,6 +60,9 @@ namespace MyLibraryStore.Controllers
             {
                 try
                 {
+                    string fileName = UploaFile(model.File) ?? string.Empty;
+
+
                     if (model.AuthorId == -1)
                     {
                         ViewBag.Message = "Please select an author from the list!";
@@ -69,6 +76,7 @@ namespace MyLibraryStore.Controllers
                         Title = model.Title,
                         Description = model.Description,
                         Author = author,
+                        ImageUrl = fileName
                     };
                     bookRepository.Add(book);
 
@@ -85,7 +93,7 @@ namespace MyLibraryStore.Controllers
                 //Authors = authorRepository.List().ToList()
                 Authors = FillSelectList()
             };
-            
+
             ModelState.AddModelError("", "You have to fill all the required fields!");
             return View(GetAllAuthors());
         }
@@ -103,7 +111,7 @@ namespace MyLibraryStore.Controllers
                 Description = book.Description,
                 AuthorId = authorId,
                 Authors = authorRepository.List().ToList(),
-                //ImageUrl = book.ImageUrl
+                ImageUrl = book.ImageUrl
             };
             return View(viewModel);
         }
@@ -115,13 +123,17 @@ namespace MyLibraryStore.Controllers
         {
             try
             {
+
+                string fileName = UploaFile(viewModel.File, viewModel.ImageUrl);
+               
                 var author = authorRepository.Find(viewModel.AuthorId);
                 Book book = new Book
                 {
-                    //Id = viewModel.BookId,
+                    Id = viewModel.BookId,
                     Title = viewModel.Title,
                     Description = viewModel.Description,
                     Author = author,
+                    ImageUrl = fileName
                 };
                 bookRepository.Update(viewModel.BookId, book);
 
@@ -171,6 +183,42 @@ namespace MyLibraryStore.Controllers
             };
 
             return vmodel;
+        }
+        string UploaFile(IFormFile file)
+        {
+            if (file != null)
+            {
+                string uploads = Path.Combine(hosting.WebRootPath, "uploads");
+                string fullPath = Path.Combine(uploads, file.FileName);
+                file.CopyTo(new FileStream(fullPath, FileMode.Create));
+                return file.FileName;
+            }
+            return null;
+        }
+        string UploaFile(IFormFile file, string imgUrl)
+        {
+            if (file != null)
+            {
+                string uploads = Path.Combine(hosting.WebRootPath, "uploads");
+                string newPath = Path.Combine(uploads, file.FileName);
+
+                string oldPath = Path.Combine(uploads, imgUrl);
+                if (oldPath != newPath)
+                {
+                    System.IO.File.Delete(oldPath);
+                    // save the new file
+                    file.CopyTo(new FileStream(newPath, FileMode.Create));
+                }
+
+                return file.FileName;
+            }
+            return imgUrl;
+        }
+        public ActionResult Search(string term)
+        {
+            var result = bookRepository.Search(term);
+
+            return View("Index", result);
         }
     }
 }
