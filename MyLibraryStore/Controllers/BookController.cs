@@ -1,38 +1,39 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MyLibraryStore.Models;
-using MyLibraryStore.Models.Repositors;
-using MyLibraryStore.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using MyLibraryStore.Models;
+using MyLibraryStore.Models.Repositories;
+using MyLibraryStore.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyLibraryStore.Controllers
 {
     public class BookController : Controller
     {
-        private readonly IBookstoreRepository<Book> bookRepository;
-        private readonly IBookstoreRepository<Author> authorRepository;
+        private readonly IMyLibraryStoreRepository<Book> bookRepository;
+        private readonly IMyLibraryStoreRepository<Author> authorRepository;
         private readonly IHostingEnvironment hosting;
 
-        public BookController(IBookstoreRepository<Book> bookRepository,
-            IBookstoreRepository<Author> authorRepository, IHostingEnvironment hosting)
+        public BookController(IMyLibraryStoreRepository<Book> bookRepository,
+            IMyLibraryStoreRepository<Author> authorRepository,
+            IHostingEnvironment hosting)
         {
             this.bookRepository = bookRepository;
             this.authorRepository = authorRepository;
             this.hosting = hosting;
         }
-        // GET: BookController
+        // GET: Book
         public ActionResult Index()
         {
             var books = bookRepository.List();
             return View(books);
         }
 
-        // GET: BookController/Details/5
+        // GET: Book/Details/5
         public ActionResult Details(int id)
         {
             var book = bookRepository.Find(id);
@@ -40,18 +41,18 @@ namespace MyLibraryStore.Controllers
             return View(book);
         }
 
-        // GET: BookController/Create
+        // GET: Book/Create
         public ActionResult Create()
         {
             var model = new BookAuthorViewModel
             {
-                //Authors = authorRepository.List().ToList()
                 Authors = FillSelectList()
             };
+
             return View(model);
         }
 
-        // POST: BookController/Create
+        // POST: Book/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BookAuthorViewModel model)
@@ -60,12 +61,12 @@ namespace MyLibraryStore.Controllers
             {
                 try
                 {
-                    string fileName = UploaFile(model.File) ?? string.Empty;
-
+                    string fileName = UploadFile(model.File) ?? string.Empty;
 
                     if (model.AuthorId == -1)
                     {
                         ViewBag.Message = "Please select an author from the list!";
+
                         return View(GetAllAuthors());
                     }
 
@@ -78,6 +79,7 @@ namespace MyLibraryStore.Controllers
                         Author = author,
                         ImageUrl = fileName
                     };
+
                     bookRepository.Add(book);
 
                     return RedirectToAction(nameof(Index));
@@ -86,19 +88,14 @@ namespace MyLibraryStore.Controllers
                 {
                     return View();
                 }
-
             }
-            var vmodel = new BookAuthorViewModel
-            {
-                //Authors = authorRepository.List().ToList()
-                Authors = FillSelectList()
-            };
+
 
             ModelState.AddModelError("", "You have to fill all the required fields!");
             return View(GetAllAuthors());
         }
 
-        // GET: BookController/Edit/5
+        // GET: Book/Edit/5
         public ActionResult Edit(int id)
         {
             var book = bookRepository.Find(id);
@@ -113,52 +110,56 @@ namespace MyLibraryStore.Controllers
                 Authors = authorRepository.List().ToList(),
                 ImageUrl = book.ImageUrl
             };
+
             return View(viewModel);
         }
 
-        // POST: BookController/Edit/5
+        // POST: Book/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(BookAuthorViewModel viewModel)
         {
             try
             {
+                // TODO: Add update logic here
+                string fileName = UploadFile(viewModel.File, viewModel.ImageUrl);
 
-                string fileName = UploaFile(viewModel.File, viewModel.ImageUrl);
-               
                 var author = authorRepository.Find(viewModel.AuthorId);
                 Book book = new Book
                 {
-                    Id = viewModel.BookId,
+                    Id=viewModel.BookId,
                     Title = viewModel.Title,
                     Description = viewModel.Description,
                     Author = author,
                     ImageUrl = fileName
                 };
+
                 bookRepository.Update(viewModel.BookId, book);
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception)
             {
                 return View();
             }
         }
 
-        // GET: BookController/Delete/5
+        // GET: Book/Delete/5
         public ActionResult Delete(int id)
         {
             var book = bookRepository.Find(id);
+
             return View(book);
         }
 
-        // POST: BookController/Delete/5
+        // POST: Book/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ConfirmDelete(int id, IFormCollection collection)
+        public ActionResult ConfirmDelete(int id)
         {
             try
             {
+                // TODO: Add delete logic here
                 bookRepository.Delete(id);
 
                 return RedirectToAction(nameof(Index));
@@ -168,6 +169,7 @@ namespace MyLibraryStore.Controllers
                 return View();
             }
         }
+
         List<Author> FillSelectList()
         {
             var authors = authorRepository.List().ToList();
@@ -175,6 +177,7 @@ namespace MyLibraryStore.Controllers
 
             return authors;
         }
+
         BookAuthorViewModel GetAllAuthors()
         {
             var vmodel = new BookAuthorViewModel
@@ -184,41 +187,69 @@ namespace MyLibraryStore.Controllers
 
             return vmodel;
         }
-        string UploaFile(IFormFile file)
+
+        string UploadFile(IFormFile file)
         {
             if (file != null)
             {
                 string uploads = Path.Combine(hosting.WebRootPath, "uploads");
                 string fullPath = Path.Combine(uploads, file.FileName);
                 file.CopyTo(new FileStream(fullPath, FileMode.Create));
+
                 return file.FileName;
             }
+
             return null;
         }
-        string UploaFile(IFormFile file, string imgUrl)
+
+        string UploadFile(IFormFile file, string imageUrl)
         {
             if (file != null)
             {
                 string uploads = Path.Combine(hosting.WebRootPath, "uploads");
-                string newPath = Path.Combine(uploads, file.FileName);
 
-                string oldPath = Path.Combine(uploads, imgUrl);
+                string newPath = Path.Combine(uploads, file.FileName);
+                string oldPath = Path.Combine(uploads, imageUrl);
+
                 if (oldPath != newPath)
                 {
                     System.IO.File.Delete(oldPath);
-                    // save the new file
                     file.CopyTo(new FileStream(newPath, FileMode.Create));
                 }
 
                 return file.FileName;
             }
-            return imgUrl;
+
+            return imageUrl;
         }
+
         public ActionResult Search(string term)
         {
             var result = bookRepository.Search(term);
 
             return View("Index", result);
         }
+
     }
 }
+
+/* *****************_ValidationScriptsPartial.cshtml ****************
+ <environment names="Development">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+            asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator"
+            crossorigin="anonymous"
+            integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.9/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"
+            crossorigin="anonymous"
+            integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds">
+    </script>
+</environment>
+ */

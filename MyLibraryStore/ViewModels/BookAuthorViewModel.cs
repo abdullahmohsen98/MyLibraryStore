@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using MyLibraryStore.Models;
+﻿using MyLibraryStore.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,19 +13,20 @@ namespace MyLibraryStore.ViewModels
         public int BookId { get; set; }
 
         [Required]
-        [MaxLength(20)]
+        [MaxLength(50)]
         [MinLength(5)]
         public string Title { get; set; }
 
         [Required]
-        [StringLength(120, MinimumLength = 5)]
+        [StringLength(120,MinimumLength =5)]
         public string Description { get; set; }
 
         public int AuthorId { get; set; }
 
         public List<Author> Authors { get; set; }
-        public IFormFile File { get; set; }
-        public string ImageUrl { get; set; }
 
+        public IFormFile File { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

@@ -37,19 +37,15 @@
         @if (Model.ImageUrl != null)
         {
             <dt>
-                Image
+                Image:
             </dt>
             <dd>
                 <img src="~/uploads/@Model.ImageUrl" style="width:128px;" class="img-thumbnail" />
             </dd>
         }
-        </dl>
+    </dl>
 </div>
 <div>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        <a asp-action="Index" class="btn btn-primary" >Back to List</a>
-    </div>
-@*<div class="form-group">
-    <input type="submit" value="Edit" class="btn btn-outline-danger" />  |
-    <a asp-action="Index" class="btn btn-primary">Back to List</a>
-</div>*@
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
