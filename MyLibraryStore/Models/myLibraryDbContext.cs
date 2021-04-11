@@ -8,11 +8,11 @@ namespace MyLibraryStore.Models
 {
     public class myLibraryDbContext:DbContext
     {
-        public myLibraryDbContext(DbContextOptions<myLibraryDbContext> options ):base(options)
-        {
+        //public myLibraryDbContext(DbContextOptions<myLibraryDbContext> options ):base(options)
+        //{
 
-        }
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<Book> Books { get; set; }
+        //}
+        //public DbSet<Author> Authors { get; set; }
+        //public DbSet<Book> Books { get; set; }
     }
 }
