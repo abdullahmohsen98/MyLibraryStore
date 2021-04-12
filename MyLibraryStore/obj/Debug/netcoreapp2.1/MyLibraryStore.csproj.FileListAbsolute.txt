@@ -115,11 +115,11 @@ F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\M
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.pdb
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.genruntimeconfig.cache
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\MyLibraryStore.csproj.CopyComplete
-F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
-F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
-F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+F:\Abdullah\ITI 3 Months\HTML\ASP.NET CORE mvc Day 47\Project\BOOKSTORE\GitHup\MyLibraryStore\MyLibraryStore\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
