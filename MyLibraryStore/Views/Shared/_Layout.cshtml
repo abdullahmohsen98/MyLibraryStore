@@ -4,11 +4,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"] | MyLibraryStore application</title>
-
+    
     <environment include="Development">
         <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
         <link href="~/css/Site.css" rel="stylesheet" />
         <link href="~/css/NewStyle.css" rel="stylesheet" />
+
     </environment>
     <environment exclude="Development">
         @*<link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
@@ -25,7 +26,7 @@
         <link href="~/css/site.min.css" rel="stylesheet" />
     </environment>
 
-    
+
 </head>
 <body>
     <partial name="_header" />
