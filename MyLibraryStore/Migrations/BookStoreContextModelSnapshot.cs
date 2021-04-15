@@ -8,8 +8,8 @@ using MyLibraryStore.Data;
 
 namespace MyLibraryStore.Migrations
 {
-    [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MyLibraryStoreContext))]
+    partial class MyLibraryStoreContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

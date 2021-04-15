@@ -11,10 +11,10 @@ namespace MyLibraryStore.Repository
 {
     public class BookRepository : IBookRepository
     {
-        private readonly BookStoreContext _context = null;
+        private readonly MyLibraryStoreContext _context = null;
         private readonly IConfiguration _configuration;
 
-        public BookRepository(BookStoreContext context, IConfiguration configuration)
+        public BookRepository(MyLibraryStoreContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {}
+    "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {
+    "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
+        "projectUniqueName": "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
         "projectName": "MyLibraryStore",
-        "projectPath": "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
-        "packagesPath": "C:\\Users\\Darsh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darsh\\Downloads\\MyProject2\\MyLibraryStore\\MyLibraryStore\\obj\\",
+        "projectPath": "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
+        "packagesPath": "C:\\Users\\Abdallah\\.nuget\\packages\\",
+        "outputPath": "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Darsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Abdallah\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -70,7 +70,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
@@ -91,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

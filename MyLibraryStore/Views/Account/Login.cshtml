@@ -28,10 +28,10 @@
 </head>
 <body>
     <div class="container">
-        <h4 class="display-4">Sign In</h4>
+        <h4 class="display-4" >Sign In</h4>
         <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4" >
                 <form method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
@@ -50,7 +50,12 @@
                         </label>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Login" class="btn btn-primary" />
+                        <input type="submit" value="Login" class="btn btn-primary btn-lg" />
+                    </div>
+                    <div>
+                        <p style="font-size:x-large"><a asp-action="ForgotPassword" asp-controller="Account">Forgot password?</a></p>
+
+                        <p style="font-size:x-large">Click <a asp-action="Signup" asp-controller="Account">here</a> to signup</p>
                     </div>
                 </form>
             </div>
@@ -59,11 +64,7 @@
             </div>
         </div>
 
-        <div>
-            <p><a asp-action="ForgotPassword" asp-controller="Account">Forgot password?</a></p>
-
-            <p>Click <a asp-action="Signup" asp-controller="Account">here</a> to signup</p>
-        </div>
+       
     </div>
 
 </body>

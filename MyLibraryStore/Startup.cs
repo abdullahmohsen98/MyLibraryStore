@@ -33,11 +33,11 @@ namespace MyLibraryStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BookStoreContext>(
+            services.AddDbContext<MyLibraryStoreContext>(
                 options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<BookStoreContext>().AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<MyLibraryStoreContext>().AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {

@@ -10,9 +10,9 @@ namespace MyLibraryStore.Repository
 {
     public class LanguageRepository : ILanguageRepository
     {
-        private readonly BookStoreContext _context = null;
+        private readonly MyLibraryStoreContext _context = null;
 
-        public LanguageRepository(BookStoreContext context)
+        public LanguageRepository(MyLibraryStoreContext context)
         {
             _context = context;
         }

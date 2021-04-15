@@ -9,7 +9,7 @@ using MyLibraryStore.Data;
 
 namespace MyLibraryStore.Migrations
 {
-    [DbContext(typeof(BookStoreContext))]
+    [DbContext(typeof(MyLibraryStoreContext))]
     [Migration("20200629061415_addednewgallerytable")]
     partial class addednewgallerytable
     {

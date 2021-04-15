@@ -8,9 +8,9 @@ using MyLibraryStore.Models;
 
 namespace MyLibraryStore.Data
 {
-    public class BookStoreContext : IdentityDbContext<ApplicationUser>
+    public class MyLibraryStoreContext : IdentityDbContext<ApplicationUser>
     {
-        public BookStoreContext(DbContextOptions<BookStoreContext> options)
+        public MyLibraryStoreContext(DbContextOptions<MyLibraryStoreContext> options)
             : base(options)
         {
 

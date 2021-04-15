@@ -9,7 +9,7 @@ using MyLibraryStore.Data;
 
 namespace MyLibraryStore.Migrations
 {
-    [DbContext(typeof(BookStoreContext))]
+    [DbContext(typeof(MyLibraryStoreContext))]
     [Migration("20200429184258_added2columns")]
     partial class added2columns
     {

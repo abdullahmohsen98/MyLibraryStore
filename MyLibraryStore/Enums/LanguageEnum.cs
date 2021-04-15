@@ -8,7 +8,7 @@ namespace MyLibraryStore.Enums
 {
     public enum LanguageEnum
     {
-        [Display(Name = "Hindi language")]
+        [Display(Name = "Arabic language")]
         Hindi = 10,
         [Display(Name = "English language")]
         English = 11,
@@ -16,7 +16,7 @@ namespace MyLibraryStore.Enums
         German = 12,
         [Display(Name = "Chinese language")]
         Chinese = 13,
-        [Display(Name = "Urdu language")]
+        [Display(Name = "Turkish language")]
         Urdu =  14
     }
 }
