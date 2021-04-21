@@ -8561,11 +8561,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
+      "projectUniqueName": "F:\\Abdullah\\ITI 3 Months\\HTML\\Projects\\Final Project\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
       "projectName": "MyLibraryStore",
-      "projectPath": "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
+      "projectPath": "F:\\Abdullah\\ITI 3 Months\\HTML\\Projects\\Final Project\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
       "packagesPath": "C:\\Users\\Abdallah\\.nuget\\packages\\",
-      "outputPath": "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\obj\\",
+      "outputPath": "F:\\Abdullah\\ITI 3 Months\\HTML\\Projects\\Final Project\\GitHup\\MyLibraryStore\\MyLibraryStore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Abdallah\\AppData\\Roaming\\NuGet\\NuGet.Config",

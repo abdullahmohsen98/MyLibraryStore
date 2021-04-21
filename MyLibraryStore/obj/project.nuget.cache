@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vG9atfmt44OU8OeIQVqAQS+dYxg17Rr3GwIycr4tIhGGNoVmdrI8hUbi3UMLnCgV6FQlqbo6vxPeqPHnXM4RwA==",
+  "dgSpecHash": "dgjez/2kcnj7JVzlD0wOZ8UAkJWhuP9utsPv1n0fFA+yKbF+3MIAIFfn9EdH9+nf0Hhdetph42/fenPGylow+A==",
   "success": true,
-  "projectFilePath": "F:\\Abdullah\\ITI 3 Months\\HTML\\ASP.NET CORE mvc Day 47\\Project\\BOOKSTORE\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
+  "projectFilePath": "F:\\Abdullah\\ITI 3 Months\\HTML\\Projects\\Final Project\\GitHup\\MyLibraryStore\\MyLibraryStore\\MyLibraryStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Abdallah\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\Abdallah\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
