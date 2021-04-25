@@ -10,6 +10,14 @@
                 <a asp-route="bookDetailsRoute" asp-route-id="@Model.Id"
                    class="btn btn-sm btn-outline-secondary">View details</a>
             </div>
+            <div class="btn-group">
+                <a asp-route="Edit" asp-route-id="@Model.Id"
+                   class="btn btn-sm btn-outline-secondary">Edit</a>
+            </div>
+            <div class="btn-group">
+                <a asp-route="DeleteRoute" asp-route-id="@Model.Id"
+                   class="btn btn-sm btn-outline-secondary">Delete</a>
+            </div>
             <small class="text-muted">@(string.IsNullOrEmpty(Model.Author) ? "NA" : Model.Author)</small>
         </div>
     </div>

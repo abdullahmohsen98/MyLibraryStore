@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MyLibraryStore.Data;
 using MyLibraryStore.Models;
 using MyLibraryStore.Repository;
 
@@ -18,11 +19,14 @@ namespace MyLibraryStore.Controllers
         private readonly IBookRepository _bookRepository = null;
         private readonly ILanguageRepository _languageRepository = null;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly MyLibraryStoreContext _context ;
 
-        public BookController(IBookRepository bookRepository,
+        public BookController(IBookRepository bookRepository, MyLibraryStoreContext context,
             ILanguageRepository languageRepository,
             IWebHostEnvironment webHostEnvironment)
         {
+            _context = context;
+
             _bookRepository = bookRepository;
             _languageRepository = languageRepository;
             _webHostEnvironment = webHostEnvironment;
@@ -43,7 +47,88 @@ namespace MyLibraryStore.Controllers
 
             return View(data);
         }
+        public async Task <ActionResult> Edit(int id)
+        {
+            var book = await _bookRepository.GetBookById(id);
+           // var authorId = book.Author == null ? book.Author.id = 0 : book.Author.Id;
 
+            var viewModel = new BookModel
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Description = book.Description,
+                Author = book.Author,
+                Category = book.Category,
+               // LanguageId=book.LanguageId,
+                Language=book.Language,
+                TotalPages=book.TotalPages,
+                CoverPhoto=book.CoverPhoto,
+                CoverImageUrl=book.CoverImageUrl,
+                GalleryFiles=book.GalleryFiles,
+                Gallery=book.Gallery,
+               BookPdf=book.BookPdf,
+               BookPdfUrl=book.BookPdfUrl
+               
+            };
+            return View(viewModel);
+        }
+
+        // POST: BookController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(BookModel viewModel)
+        {
+            //try
+            //{
+
+            //    string fileName = UploaFile(viewModel.File, viewModel.ImageUrl);
+
+            //    var author = authorRepository.Find(viewModel.AuthorId);
+            //    Book book = new Book
+            //    {
+            //        Id = viewModel.BookId,
+            //        Title = viewModel.Title,
+            //        Description = viewModel.Description,
+            //        Author = author,
+            //        ImageUrl = fileName
+            //    };
+            //    bookRepository.Update(viewModel.BookId, book);
+
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
+            return View();
+        }
+        [Route("ConfirmDelete/{id:int:min(1)}", Name = "DeleteRoute")]
+
+        [HttpPost]
+
+        public IActionResult Delete(int id)
+        {
+            var x = _context.Books.Find(id);
+
+            return View(_context.Remove(x));
+        }
+
+        // POST: BookController/Delete/5
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmDelete(int id, IFormCollection collection)
+        {
+            try
+            {
+             
+                _context.Remove(id);
+
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "" });
+            }
+            catch
+            {
+                return View();
+            }
+        }
         public List<BookModel> SearchBooks(string bookName, string authorName)
         {
             return _bookRepository.SearchBook(bookName, authorName);
