@@ -73,10 +73,20 @@ export class UserRegistrationComponent implements OnDestroy {
             console.log('Error ocurred while adding book data : ', error);
           });
     }
+
   }
 
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  stringOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return true;
+    }
+    return false;
+
   }
 }

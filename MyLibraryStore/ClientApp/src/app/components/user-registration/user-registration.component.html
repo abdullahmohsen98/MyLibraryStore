@@ -14,29 +14,46 @@
                 <mat-card-content>
                     <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="First name" formControlName="firstname" required>
-                            <mat-error *ngIf="firstname.touched && firstname.invalid">First Name is required</mat-error>
+                            <input (keypress)="stringOnly($event)" type="text"  matInput placeholder="First name" formControlName="firstname" required minlength="4">
+                            <mat-error *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                            <div *ngIf="firstname.errors.required">
+                              Name is required.</div>
+                            <div *ngIf="firstname.errors.minlength">
+                              Name must be at least 4 characters long.
+                            </div>
+                          </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="Last Name" formControlName="lastname" required>
-                            <mat-error *ngIf="lastname.touched && lastname.invalid">Last Name is required</mat-error>
+                            <input (keypress)="stringOnly($event)" type="text"  matInput placeholder="Last Name" formControlName="lastname" required minlength="4">
+                            <mat-error *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                              <div *ngIf="lastname.errors.required">
+                                Name is required.
+                              </div>
+                              <div *ngIf="lastname.errors.minlength">
+                                Name must be at least 4 characters long.
+                              </div>
+                            </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="full-width">
-                            <input matInput placeholder="User Name" formControlName="username" required>
-                            <mat-error *ngIf="username.touched && username.hasError('required')">User Name is required
+                            <input matInput placeholder="User Name" formControlName="username" required minlength="4">
+                            <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+                              <div *ngIf="username.errors.required">
+                                Name is required.
+                              </div>
+                              <div *ngIf="username.errors.minlength">
+                                Name must be at least 4 characters long.
+                              </div>
                             </mat-error>
                             <mat-error *ngIf="username.touched && username.hasError('userNameNotAvailable')">User Name
-                                is not
-                                available</mat-error>
+                                is not available</mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="full-width">
                             <input matInput placeholder="Password" formControlName="password"
                                 [type]="showPassword ? 'password' : 'text'" required>
-                            <mat-icon matSuffix (click)="showPassword = !showPassword">{{showPassword ? 'visibility_off' :
-                'visibility'}}</mat-icon>
+                            <mat-icon matSuffix (click)="showPassword = !showPassword">{{showPassword ? 'visibility_off' :'visibility'}}</mat-icon>
                             <mat-error *ngIf="password.touched && password.hasError('required')">Password is required
                             </mat-error>
                             <mat-error *ngIf="password.touched && password.hasError('passwordValidation')">
