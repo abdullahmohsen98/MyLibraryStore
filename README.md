@@ -1,6 +1,6 @@
 # MyLibraryStore 
 
-An e-commerce application for an online bookshop created with ASP.NET Core 5.0 and Angular 11, using SQL Server as database.
+This is An e-commerce application for an online bookshop created with ASP.NET Core 5.0 and Angular 11, using SQL Server as database.
 
 # Concepts Covered
 
