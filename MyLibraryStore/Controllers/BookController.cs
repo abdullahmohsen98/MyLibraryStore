@@ -1,118 +1,171 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using MyLibraryStore.Interfaces;
+using MyLibraryStore.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using MyLibraryStore.Models;
-using MyLibraryStore.Repository;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace MyLibraryStore.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
     public class BookController : Controller
     {
-        private readonly IBookRepository _bookRepository = null;
-        private readonly ILanguageRepository _languageRepository = null;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        readonly IWebHostEnvironment _hostingEnvironment;
+        readonly IBookService _bookService;
+        readonly IConfiguration _config;
+        readonly string coverImageFolderPath = string.Empty;
 
-        public BookController(IBookRepository bookRepository,
-            ILanguageRepository languageRepository,
-            IWebHostEnvironment webHostEnvironment)
+        public BookController(IConfiguration config, IWebHostEnvironment hostingEnvironment, IBookService bookService)
         {
-            _bookRepository = bookRepository;
-            _languageRepository = languageRepository;
-            _webHostEnvironment = webHostEnvironment;
-        }
-
-        [Route("all-books")]
-        public async Task<ViewResult> GetAllBooks()
-        {
-            var data = await _bookRepository.GetAllBooks();
-
-            return View(data);
-        }
-
-        [Route("book-details/{id:int:min(1)}", Name = "bookDetailsRoute")]
-        public async Task<ViewResult> GetBook(int id)
-        {
-            var data = await _bookRepository.GetBookById(id);
-
-            return View(data);
-        }
-
-        public List<BookModel> SearchBooks(string bookName, string authorName)
-        {
-            return _bookRepository.SearchBook(bookName, authorName);
-        }
-
-        [Authorize]
-        public async Task<ViewResult> AddNewBook(bool isSuccess = false, int bookId = 0)
-        {
-            var model = new BookModel();
-
-            ViewBag.IsSuccess = isSuccess;
-            ViewBag.BookId = bookId;
-            return View(model);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddNewBook(BookModel bookModel)
-        {
-            if (ModelState.IsValid)
+            _config = config;
+            _bookService = bookService;
+            _hostingEnvironment = hostingEnvironment;
+            coverImageFolderPath = Path.Combine(_hostingEnvironment.WebRootPath, "Upload");
+            if (!Directory.Exists(coverImageFolderPath))
             {
-                if (bookModel.CoverPhoto != null)
+                Directory.CreateDirectory(coverImageFolderPath);
+            }
+        }
+
+        /// <summary>
+        /// Get the list of available books
+        /// </summary>
+        /// <returns>List of Book</returns>
+        [HttpGet]
+        public async Task<List<Book>> Get()
+        {
+            return await Task.FromResult(_bookService.GetAllBooks()).ConfigureAwait(true) ;
+        }
+
+        /// <summary>
+        /// Get the specific book data corresponding to the BookId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            Book book = _bookService.GetBookData(id);
+            if(book!=null)
+            {
+                return Ok(book);
+            }
+            return NotFound();
+        }
+
+        /// <summary>
+        /// Get the list of available categories
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetCategoriesList")]
+        public async Task<IEnumerable<Categories>> CategoryDetails()
+        {
+            return await Task.FromResult(_bookService.GetCategories()).ConfigureAwait(true) ;
+        }
+
+        /// <summary>
+        /// Get the random five books from the category of book whose BookId is supplied
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetSimilarBooks/{bookId}")]
+        public async Task<List<Book>> SimilarBooks(int bookId)
+        {
+            return await Task.FromResult(_bookService.GetSimilarBooks(bookId)).ConfigureAwait(true) ;
+        }
+
+        /// <summary>
+        /// Add a new book record
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost, DisableRequestSizeLimit]
+        [Authorize(Policy = UserRoles.Admin)]
+        public int Post()
+        {
+            Book book = JsonConvert.DeserializeObject<Book>(Request.Form["bookFormData"].ToString());
+
+            if (Request.Form.Files.Count > 0)
+            {
+                var file = Request.Form.Files[0];
+
+                if (file.Length > 0)
                 {
-                    string folder = "books/cover/";
-                    bookModel.CoverImageUrl = await UploadImage(folder, bookModel.CoverPhoto);
-                }
-
-                if (bookModel.GalleryFiles != null)
-                {
-                    string folder = "books/gallery/";
-
-                    bookModel.Gallery = new List<GalleryModel>();
-
-                    foreach (var file in bookModel.GalleryFiles)
+                    string fileName = Guid.NewGuid() + ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    string fullPath = Path.Combine(coverImageFolderPath, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        var gallery = new GalleryModel()
-                        {
-                            Name = file.FileName,
-                            URL = await UploadImage(folder, file)
-                        };
-                        bookModel.Gallery.Add(gallery);
+                        file.CopyTo(stream);
                     }
-                }
-
-                if (bookModel.BookPdf != null)
-                {
-                    string folder = "books/pdf/";
-                    bookModel.BookPdfUrl = await UploadImage(folder, bookModel.BookPdf);
-                }
-
-                int id = await _bookRepository.AddNewBook(bookModel);
-                if (id > 0)
-                {
-                    return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
+                    book.CoverFileName = fileName;
                 }
             }
-
-            return View();
+            else
+            {
+                book.CoverFileName = _config["DefaultCoverImageFile"];
+            }
+            return _bookService.AddBook(book);
         }
 
-        private async Task<string> UploadImage(string folderPath, IFormFile file)
+        /// <summary>
+        /// Update a particular book record
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
+        [Authorize(Policy = UserRoles.Admin)]
+        public int Put()
         {
+            Book book = JsonConvert.DeserializeObject<Book>(Request.Form["bookFormData"].ToString());
+            if (Request.Form.Files.Count > 0)
+            {
+                var file = Request.Form.Files[0];
 
-            folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
+                if (file.Length > 0)
+                {
+                    string fileName = Guid.NewGuid() + ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    string fullPath = Path.Combine(coverImageFolderPath, fileName);
+                    bool isFileExists = Directory.Exists(fullPath);
 
-            string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folderPath);
+                    if (!isFileExists)
+                    {
+                        using (var stream = new FileStream(fullPath, FileMode.Create))
+                        {
+                            file.CopyTo(stream);
+                        }
+                        book.CoverFileName = fileName;
+                    }
+                }
+            }
+            return _bookService.UpdateBook(book);
+        }
 
-            await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
-
-            return "/" + folderPath;
+        /// <summary>
+        /// Delete a particular book record
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        [Authorize(Policy = UserRoles.Admin)]
+        public int Delete(int id)
+        {
+            string coverFileName = _bookService.DeleteBook(id);
+            if (coverFileName != _config["DefaultCoverImageFile"])
+            {
+                string fullPath = Path.Combine(coverImageFolderPath, coverFileName);
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+            }
+            return 1;
         }
     }
 }
