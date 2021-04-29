@@ -45,7 +45,20 @@ namespace MyLibraryStore
                 {
                     Title = "MyLibraryStore API",
                     Version = "v1",
+<<<<<<< HEAD
                     
+=======
+                    //Contact = new OpenApiContact
+                    //{
+                    //    Name = "Ankit Sharma",
+                    //    Url = new Uri("https://ankitsharmablogs.com/"),
+                    //},
+                    //License = new OpenApiLicense
+                    //{
+                    //    Name = "MIT Licenese",
+                    //    Url = new Uri("https://github.com/AnkitSharma-007/MyLibraryStore/blob/master/LICENSE"),
+                    //}
+>>>>>>> ac0e6316928c7739c780524c9ca63f32443082a3
                 });
 
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme

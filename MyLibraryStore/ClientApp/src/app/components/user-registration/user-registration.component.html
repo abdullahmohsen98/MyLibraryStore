@@ -14,17 +14,27 @@
                 <mat-card-content>
                     <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
                         <mat-form-field class="full-width">
+<<<<<<< HEAD
                             <input (keypress)="stringOnly($event)" type="text"  matInput placeholder="First name" formControlName="firstname" required minlength="3">
                             <mat-error *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
                             <div *ngIf="firstname.errors.required">
                               FirstName is required.</div>
                             <div *ngIf="firstname.errors.minlength">
                               FirstName must be at least 3 characters long.
+=======
+                            <input (keypress)="stringOnly($event)" type="text"  matInput placeholder="First name" formControlName="firstname" required minlength="4">
+                            <mat-error *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                            <div *ngIf="firstname.errors.required">
+                              Name is required.</div>
+                            <div *ngIf="firstname.errors.minlength">
+                              Name must be at least 4 characters long.
+>>>>>>> ac0e6316928c7739c780524c9ca63f32443082a3
                             </div>
                           </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="full-width">
+<<<<<<< HEAD
                             <input (keypress)="stringOnly($event)" type="text"  matInput placeholder="Last Name" formControlName="lastname" required minlength="3">
                             <mat-error *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
                               <div *ngIf="lastname.errors.required">
@@ -32,11 +42,21 @@
                               </div>
                               <div *ngIf="lastname.errors.minlength">
                                 LastName must be at least 3 characters long.
+=======
+                            <input (keypress)="stringOnly($event)" type="text"  matInput placeholder="Last Name" formControlName="lastname" required minlength="4">
+                            <mat-error *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                              <div *ngIf="lastname.errors.required">
+                                Name is required.
+                              </div>
+                              <div *ngIf="lastname.errors.minlength">
+                                Name must be at least 4 characters long.
+>>>>>>> ac0e6316928c7739c780524c9ca63f32443082a3
                               </div>
                             </mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="full-width">
+<<<<<<< HEAD
                             <input matInput placeholder="User Name" formControlName="username" required minlength="5">
                             <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
                               <div *ngIf="username.errors.required">
@@ -47,6 +67,18 @@
                               </div>
                             </mat-error>
                             <mat-error *ngIf="username.touched && username.hasError('userNameNotAvailable')">UserName
+=======
+                            <input matInput placeholder="User Name" formControlName="username" required minlength="4">
+                            <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+                              <div *ngIf="username.errors.required">
+                                Name is required.
+                              </div>
+                              <div *ngIf="username.errors.minlength">
+                                Name must be at least 4 characters long.
+                              </div>
+                            </mat-error>
+                            <mat-error *ngIf="username.touched && username.hasError('userNameNotAvailable')">User Name
+>>>>>>> ac0e6316928c7739c780524c9ca63f32443082a3
                                 is not available</mat-error>
                         </mat-form-field>
 
