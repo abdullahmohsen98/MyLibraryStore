@@ -50,7 +50,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     PriceFilterComponent,
     SearchComponent,
     AddtowishlistComponent,
-    WishlistComponent,
+    WishlistComponent
 
   ],
   imports: [

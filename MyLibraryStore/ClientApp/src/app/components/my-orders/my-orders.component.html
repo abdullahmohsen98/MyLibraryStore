@@ -19,9 +19,9 @@
     </div>
     <div *ngIf="dataSource && dataSource.filteredData.length; else noorders" class="docs-example-viewer-body">
         <div class="full-width">
-            <!-- <mat-form-field class="full-width">
+            <mat-form-field class="full-width">
                 <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-            </mat-form-field> -->
+            </mat-form-field>
 
             <mat-card-content>
                 <div table-container class="mat-elevation-z2">
@@ -77,7 +77,7 @@
                         </tr>
                         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
                     </table>
-                    <!-- <mat-paginator [pageSizeOptions]="[ 1,5, 10, 15, 20]"></mat-paginator> -->
+                    <mat-paginator [pageSizeOptions]="[ 100,50,40,30,20,10,5]"></mat-paginator>
                 </div>
             </mat-card-content>
         </div>
